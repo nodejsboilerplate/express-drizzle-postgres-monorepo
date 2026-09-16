@@ -24,9 +24,12 @@ services:
           target: /app/src
           ignore:
             - ./apps/server/node_modules/
+            - node_modules/
 
         - action: rebuild
           path: ./apps/server/package.json
+        - action: rebuild
+          path: package.json
 
         - action: restart
           path: ./apps/server/.env

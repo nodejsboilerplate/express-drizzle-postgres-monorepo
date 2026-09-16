@@ -3,14 +3,20 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev",
+    "dev": "turbo run dev --concurrency=30",
+    "check:lint": "turbo run check:lint",
+    "fix:lint": "turbo run fix:lint",
+    "check:types": "turbo run check:types",
+    "format": "prettier --write \"**/*.{ts,tsx,json,css}\"",
+    "gen:docs": "typedoc",
+    "gen:docs-all": "npm run docs --workspaces --if-present",
+    "clean": "turbo run clean && rm -rf node_modules dist .turbo && echo 'Root Cleanup complete!'",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types",
-        "commit": "git-cz",
-        "prepare": "husky"
+    "test": "turbo run test",
+    "commit": "git-cz",
+    "prepare": "husky"
   },
-    "config": {
+  "config": {
     "commitizen": {
       "path": "@commitlint/cz-commitlint"
     }
