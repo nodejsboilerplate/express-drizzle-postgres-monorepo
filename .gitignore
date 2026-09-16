@@ -36,3 +36,18 @@ yarn-error.log*
 # Misc
 .DS_Store
 *.pem
+
+
+typedocs
+
+typedoc
+docs
+.esbuild
+
+.react-email
+
+.terraform/
+
+# Remove if you need and remember to use remote execution
+*.tfstate.*
+*.tfstate

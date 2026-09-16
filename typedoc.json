@@ -1,0 +1,17 @@
+{
+  "entryPoints": ["packages/*", "apps/*", "templates/*"],
+
+  "name": "Fluctux Code Examples",
+  "entryPointStrategy": "packages",
+  "includeVersion": false,
+  "exclude": [
+    "**/node_modules/**",
+    "**/docs/**",
+    "**/dist/**",
+    "**/*.test.ts",
+    "**/*.spec.ts"
+  ],
+  "externalPattern": ["**/node_modules/**", "apps/storybook"],
+  "excludeExternals": true,
+  "skipErrorChecking": true
+}
