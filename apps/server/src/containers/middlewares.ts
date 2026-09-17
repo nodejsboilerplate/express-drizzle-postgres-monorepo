@@ -1,4 +1,3 @@
-import type { createContainer } from "@/container";
 import { createAuthMiddleware } from "@/middlewares";
 import type { createRepositories } from "./repositories";
 import type { createValidators } from "./validators";

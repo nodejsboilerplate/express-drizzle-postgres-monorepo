@@ -1,4 +1,4 @@
-import { ApiError, ApiResponse } from "@/libs";
+import { ApiResponse } from "@/libs";
 import { CookieService } from "@/services";
 import type { AuthService } from "@/services/auth";
 import type { UserProfileDataByLoginType } from "@/types";
@@ -70,7 +70,7 @@ export class AuthController {
     return res.status(200).json(new ApiResponse(200, "Login Successful."));
   }
 
-  async redirectGoogleAuthHandler(req: Request, res: Response) {
+  async redirectGoogleAuthHandler(_req: Request, res: Response) {
     return res.redirect(this.authService.googleOAuth.generateAuthUrlForLogin());
   }
 

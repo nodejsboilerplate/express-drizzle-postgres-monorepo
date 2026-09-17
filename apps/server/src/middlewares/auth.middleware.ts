@@ -1,4 +1,3 @@
-import type { createContainer } from "@/container";
 import type { createMiddlewares } from "@/containers";
 import { getSystemCustomErrorMsgByKey } from "@/events";
 import { ApiError } from "@/libs";
