@@ -26,7 +26,7 @@
     "db:push": "drizzle-kit push",
     "db:seed": "tsx ./src/database/seeds/index.ts",
     "test": "vitest",
-    "clean": "rm -rf node_modules && echo 'Cleanup complete!'"
+    "clean": "rm -rf node_modules dist docs .turbo && echo 'Cleanup complete!'"
   },
   "keywords": [],
   "author": "",

@@ -17,7 +17,7 @@
     "build:ui": "email build --dir src",
     "dev": "email dev --dir src -p 3001",
     "export": "email export --dir src",
-    "start": "email start -p 3001"
+    "clean": "rm -rf node_modules dist docs .react-email .turbo && echo 'Cleanup complete!'"
   },
   "keywords": [],
   "author": "",

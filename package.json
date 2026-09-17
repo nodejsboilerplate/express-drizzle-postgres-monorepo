@@ -10,7 +10,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,json,css}\"",
     "gen:docs": "turbo run gen:docs",
     "gen:docs-all": "NODE_OPTIONS='--max-old-space-size=4096' typedoc",
-    "clean": "turbo run clean && rm -rf node_modules dist .turbo && echo 'Root Cleanup complete!'",
+    "clean": "turbo run clean && rm -rf node_modules dist docs .turbo && echo 'Root Cleanup complete!'",
     "lint": "turbo run lint",
     "test": "turbo run test",
     "commit": "git-cz",
