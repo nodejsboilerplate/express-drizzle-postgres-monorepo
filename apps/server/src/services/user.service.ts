@@ -1,7 +1,7 @@
 import { UserRepository } from "@/database/repositories";
 import { ApiError, getSystemCustomErrorMsgByKey } from "@repo/shared";
 import { isZodError, validationError } from "@/utils";
-import { UserInputValidators } from "@/validators/inputs";
+import { UserInputValidators } from "@repo/zod";
 import type {
   CreateUserAddressInputType,
   CreateUserContactInputType,
@@ -16,7 +16,7 @@ import type {
   UpdatePhoneInputType,
   UpdateProfileInputType,
   UserIdWithContextIdInputType,
-} from "@/zod";
+} from "@repo/zod";
 
 type UserServiceDepsType = {
   userInputValidators: UserInputValidators;

@@ -1,4 +1,4 @@
-import { UserInputValidators } from "@/validators/inputs";
+import { UserInputValidators } from "@repo/zod";
 
 export const createValidators = () => {
   const userInputValidators = new UserInputValidators();

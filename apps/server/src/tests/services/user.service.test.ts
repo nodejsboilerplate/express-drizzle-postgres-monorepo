@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { UserService } from "@/services";
-import { UserInputValidators } from "@/validators/inputs";
+import { UserInputValidators } from "@repo/zod";
 import { UserRepository } from "@/database/repositories";
 
 const mocks = vi.hoisted(() => ({

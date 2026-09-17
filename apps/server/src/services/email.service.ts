@@ -1,4 +1,4 @@
-import type { IEmailService } from "@/blueprints";
+import type { IEmailService } from "@repo/types";
 import { ResendService } from "./resend.service";
 import { OtpVerificationEmail2 } from "@repo/emails";
 import {
@@ -9,9 +9,9 @@ import {
 } from "@/utils";
 import { ApiError, getSystemCustomErrorMsgByKey } from "@repo/shared";
 
-import { UserInputValidators } from "@/validators/inputs";
+import { UserInputValidators } from "@repo/zod";
 import { UserRepository } from "@/database/repositories";
-import type { UserIdWithContextIdInputType } from "@/zod";
+import type { UserIdWithContextIdInputType } from "@repo/zod";
 
 type EmailServiceDepsType = {
   userInputValidators: UserInputValidators;

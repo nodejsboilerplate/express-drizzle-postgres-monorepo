@@ -11,7 +11,7 @@ vi.mock("@/utils", () => ({
   validationError: mocks.validationError,
 }));
 
-vi.mock("@/events", () => ({
+vi.mock("@repo/events", () => ({
   getSystemCustomErrorMsgByKey: (key: string) => key,
 }));
 

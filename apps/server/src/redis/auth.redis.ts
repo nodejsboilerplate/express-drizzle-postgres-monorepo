@@ -1,4 +1,4 @@
-import { RedisResponse } from "@/constants";
+import { RedisResponse } from "@repo/constants";
 import { redisClient } from "@/libs";
 import { ACCESS_TOKEN_EXPIRY_SEC } from "@/services";
 import type { UserBasicInfoDataType } from "@/types";

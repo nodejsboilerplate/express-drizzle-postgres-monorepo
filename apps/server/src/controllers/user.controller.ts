@@ -10,7 +10,7 @@ import type {
   UpdatePhoneInputType,
   UpdateProfileInputType,
   UserIdWithContextIdInputType,
-} from "@/zod";
+} from "@repo/zod";
 
 import { ApiResponse } from "@repo/shared";
 import { UserService } from "@/services";

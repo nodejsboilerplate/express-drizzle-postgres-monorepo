@@ -3,9 +3,9 @@ import { GoogleOAuthService } from "./google-auth.service";
 import { ManualAuthService } from "./manual-auth.service";
 import { UserService } from "../user.service";
 import { UserRepository } from "@/database/repositories";
-import { UserInputValidators } from "@/validators/inputs";
+import { UserInputValidators } from "@repo/zod";
 import { TokenService } from "./token.service";
-import type { IEmailService } from "@/blueprints";
+import type { IEmailService } from "@repo/types";
 import type { UserBasicInfoDataType } from "@/types";
 import { ApiError, getSystemCustomErrorMsgByKey } from "@repo/shared";
 

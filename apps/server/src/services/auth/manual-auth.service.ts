@@ -1,12 +1,15 @@
-import type { CreateUserWithProfileInputType, LoginUserInputType } from "@/zod";
-import { UserInputValidators } from "@/validators/inputs";
+import type {
+  CreateUserWithProfileInputType,
+  LoginUserInputType,
+} from "@repo/zod";
+import { UserInputValidators } from "@repo/zod";
 import { isZodError, validationError } from "@/utils";
 import { ApiError, getSystemCustomErrorMsgByKey } from "@repo/shared";
 import bcrypt from "bcryptjs";
 import { AuthRedis } from "@/redis";
 import { UserRepository } from "@/database/repositories";
 import { UserService } from "../user.service";
-import type { IEmailService } from "@/blueprints";
+import type { IEmailService } from "@repo/types";
 import type { TokenService } from "./token.service";
 
 type ManualAuthServiceDepsType = {

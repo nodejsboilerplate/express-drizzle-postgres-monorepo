@@ -4,7 +4,7 @@ import {
   USER_ACCOUNT_PROVIDERS,
   USER_GENDERS,
   USER_ROLES,
-} from "@/constants";
+} from "@repo/constants";
 import { ZodBase } from "./base.zod";
 
 export abstract class UserZSchema extends ZodBase {

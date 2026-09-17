@@ -1,8 +1,8 @@
 import { ApiError, getSystemCustomErrorMsgByKey } from "@repo/shared";
 import { TwilioService } from "./twilio.service";
-import type { IPhoneMessageService } from "@/blueprints";
-import type { UserIdWithContextIdInputType } from "@/zod";
-import { UserInputValidators } from "@/validators/inputs";
+import type { IPhoneMessageService } from "@repo/types";
+import type { UserIdWithContextIdInputType } from "@repo/zod";
+import { UserInputValidators } from "@repo/zod";
 import { UserRepository } from "@/database/repositories";
 import {
   generateVerificationCode,

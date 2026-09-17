@@ -1,4 +1,4 @@
-import { ZodBase, type IdZType } from "@/zod";
+import { ZodBase, type IdZType } from "@/schemas";
 import type z from "zod";
 
 export class Validator {

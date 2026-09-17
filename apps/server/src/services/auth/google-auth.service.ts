@@ -2,10 +2,10 @@ import "dotenv/config";
 import { google } from "googleapis";
 import type { TokenPayload } from "google-auth-library";
 import { ApiError, getSystemCustomErrorMsgByKey } from "@repo/shared";
-import type { CreateUserWithProfileByProviderInputType } from "@/zod";
+import type { CreateUserWithProfileByProviderInputType } from "@repo/zod";
 import { AuthRedis } from "@/redis";
 import { generateRandomUsername } from "@/utils";
-import type { IEmailService, OAuthService } from "@/blueprints";
+import type { IEmailService, OAuthService } from "@repo/types";
 import type { TokenService } from "./token.service";
 import type { UserService } from "../user.service";
 

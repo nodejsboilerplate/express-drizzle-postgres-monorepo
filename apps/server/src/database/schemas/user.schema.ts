@@ -2,7 +2,11 @@ import { pgTable, pgEnum } from "drizzle-orm/pg-core";
 import * as t from "drizzle-orm/pg-core";
 import { table_timestamps } from "./helper";
 import { v4 as uuidv4 } from "uuid";
-import { USER_ACCOUNT_PROVIDERS, USER_GENDERS, USER_ROLES } from "@/constants";
+import {
+  USER_ACCOUNT_PROVIDERS,
+  USER_GENDERS,
+  USER_ROLES,
+} from "@repo/constants";
 import type { SocialLink } from "@/types";
 
 // ---------------------------------------------------------

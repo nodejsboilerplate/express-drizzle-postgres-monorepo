@@ -2,7 +2,10 @@ import { ApiResponse } from "@repo/shared";
 import { CookieService } from "@/services";
 import type { AuthService } from "@/services/auth";
 import type { UserProfileDataByLoginType } from "@/types";
-import type { CreateUserWithProfileInputType, LoginUserInputType } from "@/zod";
+import type {
+  CreateUserWithProfileInputType,
+  LoginUserInputType,
+} from "@repo/zod";
 import type { Request, Response } from "express";
 
 type AuthControllerDepsType = {

@@ -22,7 +22,7 @@ import type {
   UpdateEmailInputType,
   UpdatePhoneInputType,
   UpdateProfileInputType,
-} from "@/zod";
+} from "@repo/zod";
 import { validate as isUUID } from "uuid";
 
 // ---------------------------------------------------------

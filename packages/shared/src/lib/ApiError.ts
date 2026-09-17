@@ -2,7 +2,7 @@ import { type ApiErrorType } from "@repo/types";
 import {
   SystemCustomErrorMsgByCode,
   type SystemCustomErrorMessageDataType,
-} from "@/events";
+} from "@repo/constants";
 
 /**
  * A standardized exception class for all API-related failures.

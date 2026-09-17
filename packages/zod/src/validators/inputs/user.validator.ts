@@ -17,7 +17,7 @@ import {
   type VerifyCodeInputType,
   type VerifyCodeWithUserIdInput,
   type CreateUserWithProfileByProviderInputType,
-} from "@/zod";
+} from "@/schemas";
 import type z from "zod";
 import { Validator } from "../validator";
 

@@ -8,6 +8,12 @@ importers:
 
   .:
     dependencies:
+      '@repo/constants':
+        specifier: workspace:*
+        version: link:packages/constants
+      '@repo/zod':
+        specifier: workspace:*
+        version: link:packages/zod
       tsdown:
         specifier: ^0.22.14
         version: 0.22.14(tsx@4.23.13)(typescript@6.0.3)
@@ -134,7 +140,7 @@ importers:
         version: 2.3.4
       twilio:
         specifier: ^6.1.0
-        version: 6.1.1(debug@4.4.3(supports-color@7.2.0))(supports-color@7.2.0)
+        version: 6.1.1(supports-color@7.2.0)
       uuid:
         specifier: ^14.0.2
         version: 14.0.2
@@ -269,6 +275,12 @@ importers:
         specifier: 17.12.0
         version: 17.12.0
 
+  packages/services:
+    dependencies:
+      axios:
+        specifier: ^1.20.0
+        version: 1.20.0(debug@4.4.3(supports-color@7.2.0))(supports-color@7.2.0)
+
   packages/shared:
     dependencies:
       '@types/pg':
@@ -302,6 +314,8 @@ importers:
   packages/types: {}
 
   packages/typescript-config: {}
+
+  packages/zod: {}
 
 packages:
 
@@ -10135,7 +10149,7 @@ snapshots:
       '@turbo/windows-64': 2.10.13
       '@turbo/windows-arm64': 2.10.13
 
-  twilio@6.1.1(debug@4.4.3(supports-color@7.2.0))(supports-color@7.2.0):
+  twilio@6.1.1(supports-color@7.2.0):
     dependencies:
       axios: 1.20.0(debug@4.4.3(supports-color@7.2.0))(supports-color@7.2.0)
       dayjs: 1.11.23

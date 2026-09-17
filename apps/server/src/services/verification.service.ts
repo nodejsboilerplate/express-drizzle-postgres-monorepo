@@ -1,8 +1,8 @@
 import { UserRepository } from "@/database/repositories";
 import { ApiError, getSystemCustomErrorMsgByKey } from "@repo/shared";
 import { isZodError, validationError } from "@/utils";
-import { UserInputValidators } from "@/validators/inputs";
-import type { VerifyCodeInputType, VerifyCodeWithUserIdInput } from "@/zod";
+import { UserInputValidators } from "@repo/zod";
+import type { VerifyCodeInputType, VerifyCodeWithUserIdInput } from "@repo/zod";
 import type { UserService } from "./user.service";
 
 type VerificationServiceDepsType = {

@@ -1,5 +1,5 @@
-import type { CookieNames } from "@repo/types";
-import type { UserIdWithContextIdInputType } from "@/zod";
+import type { UserIdWithContextIdInputType } from "@repo/zod";
+import type { CookieNames } from "./auth";
 
 export interface IEmailService {
   sendSignupCode(email: string, deviceInfo: string): Promise<void>;

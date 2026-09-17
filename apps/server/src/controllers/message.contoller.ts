@@ -1,4 +1,4 @@
-import type { IEmailService, IPhoneMessageService } from "@/blueprints";
+import type { IEmailService, IPhoneMessageService } from "@repo/types";
 import {
   ApiError,
   ApiResponse,
@@ -9,7 +9,7 @@ import type {
   UserIdWithContextIdInputType,
   VerifyCodeInputType,
   VerifyCodeWithUserIdInput,
-} from "@/zod";
+} from "@repo/zod";
 import type { Request, Response } from "express";
 
 type MessageControllerDepsType = {
