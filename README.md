@@ -1,159 +1,245 @@
-# Turborepo starter
+# Nebula Monorepo
 
-This Turborepo starter is maintained by the Turborepo core team.
+**Production-ready TypeScript monorepo boilerplate.**
 
-## Using this example
+Nebula ships with authentication, observability, background infrastructure, and developer tooling pre-wired across a Turborepo + pnpm workspace, so you can skip the setup grind and start building features on day one.
 
-Run the following command:
+---
 
-```sh
-npx create-turbo@latest
+## Table of Contents
+
+- [Stack Overview](#stack-overview)
+- [Dependency Injection Container](#dependency-injection-container)
+- [Email Templates](#email-templates)
+- [Getting Started](#getting-started)
+- [Environment Setup](#environment-setup)
+- [Database Commands](#database-commands)
+- [Testing & Validation](#testing--validation)
+- [Monitoring](#monitoring)
+- [Port Map](#port-map)
+- [Quick Start Summary](#quick-start-summary)
+
+---
+
+## Stack Overview
+
+| Layer                    | Technology                                           |
+| ------------------------ | ----------------------------------------------------- |
+| Monorepo                 | Turborepo + pnpm workspaces                          |
+| Language                 | TypeScript                                           |
+| Runtime                  | Node.js                                              |
+| Framework                | Express                                              |
+| Database                 | PostgreSQL                                           |
+| ORM                      | Drizzle                                              |
+| Cache / Queue / Sessions | Redis                                                |
+| Validation               | Zod (`@repo/zod`)                                    |
+| Auth                     | JWT + Cookies + Google OAuth                         |
+| Email Delivery           | Resend + `@repo/emails` (react-email)                |
+| SMS                      | Twilio                                               |
+| Logging                  | Pino + request logger middleware, Winston (for Loki) |
+| Rate Limiting            | express-rate-limit + Redis-backed store              |
+| Testing                  | Vitest + Supertest                                   |
+| Dev Tooling              | Husky, Commitlint, Prettier, ESLint, tsdown           |
+| Containers               | Docker + Docker Compose                              |
+| Monitoring               | Prometheus + Grafana + Loki                          |
+
+---
+
+## Dependency Injection Container
+
+Same pattern as before - no Inversify, no decorators, no `reflect-metadata`. Plain composition functions, wired per-service:
+
+```
+createContainer()
+createServices()
+createRepositories()
+createValidators()
+createMiddlewares()
+createControllers()
 ```
 
-## What's inside?
+---
 
-This Turborepo includes the following packages/apps:
+## Email Templates
 
-### Apps and Packages
+`@repo/emails` ships with **4 pre-built react-email templates, designed off real Dribbble references** - not the usual bare-bones "Welcome to X" placeholder. Ready to send from day one:
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `@next/eslint-plugin-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+- signup confirmation
+- Password reset / OTP
+- Order confirmation
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+---
 
-### Utilities
+## Getting Started
 
-This Turborepo has some additional tools already setup for you:
+### 1. Install Dependencies
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo build
+```bash
+pnpm install
 ```
 
-Without global `turbo`, use your package manager:
+### 2. Create Environment Files
 
-```sh
-cd my-turborepo
-npx turbo build
-pnpm exec turbo build
-pnpm exec turbo build
+For local, non-Docker development:
+
+```bash
+cp apps/server/.env.example apps/server/.env
 ```
 
-You can build a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+For Docker-based local/production-like setup:
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo build --filter=docs
+```bash
+cp apps/server/.env.example apps/server/.env.production.local
 ```
 
-Without global `turbo`:
+> **Important:** Docker Compose reads `./apps/server/.env.production.local` for the app service (`env_file`).
 
-```sh
-npx turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
+### 3. Run in Development Mode
+
+```bash
+pnpm dev
 ```
 
-### Develop
+Runs `turbo run dev --concurrency=30`. The server starts with `tsx --watch ./src/index.ts`, listening on `PORT` from `.env` (default: `3000`).
 
-To develop all apps and packages, run the following command:
+### 4. Run a Production Build Locally
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo dev
+```bash
+pnpm build
 ```
 
-Without global `turbo`, use your package manager:
+Run the compiled server:
 
-```sh
-cd my-turborepo
-npx turbo dev
-pnpm exec turbo dev
-pnpm exec turbo dev
+```bash
+PORT=3000 node apps/server/dist/index.mjs
 ```
 
-You can develop a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+### 5. Run with Docker
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo dev --filter=web
+```bash
+docker compose up --build
 ```
 
-Without global `turbo`:
+Detached:
 
-```sh
-npx turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
+```bash
+docker compose up -d
 ```
 
-### Remote Caching
+Stop:
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo login
+```bash
+docker compose down
 ```
 
-Without global `turbo`, use your package manager:
+---
 
-```sh
-cd my-turborepo
-npx turbo login
-pnpm exec turbo login
-pnpm exec turbo login
+## Environment Setup
+
+```bash
+cp apps/server/.env.example apps/server/.env
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+**Key values include:**
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+| Variable                    | Purpose                          |
+| ---------------------------- | --------------------------------- |
+| `PORT`                      | App server port                  |
+| `NODE_ENV`                  | Runtime environment              |
+| `DATABASE_URL`              | PostgreSQL connection string     |
+| `REDIS_HOST` / `REDIS_PORT` | Redis connection                 |
+| `JWT_ACCESS_TOKEN_SECRET`   | JWT access token signing secret  |
+| `JWT_REFRESH_TOKEN_SECRET`  | JWT refresh token signing secret |
+| `RESEND_API_KEY`            | Email delivery via Resend        |
+| `GOOGLE_CLIENT_ID`          | Google OAuth                     |
+| `GOOGLE_CLIENT_SECRET`      | Google OAuth                     |
+| `GOOGLE_AUTH_REDIRECT_URI`  | Google OAuth redirect            |
+| `TWILIO_ACCOUNT_SID`        | SMS via Twilio                   |
+| `TWILIO_AUTH_TOKEN`         | SMS via Twilio                   |
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
+---
 
-```sh
-turbo link
+## Database Commands
+
+```bash
+pnpm --filter server db:generate
+pnpm --filter server db:migrate
+pnpm --filter server db:push
+pnpm --filter server db:seed
 ```
 
-Without global `turbo`:
+---
 
-```sh
-npx turbo link
-pnpm exec turbo link
-pnpm exec turbo link
+## Testing & Validation
+
+```bash
+pnpm test
+pnpm check:types
+pnpm check:lint
 ```
 
-## Useful Links
+Each runs via Turborepo across all packages, cached and parallelized.
 
-Learn more about the power of Turborepo:
+---
 
-- [Tasks](https://turborepo.dev/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.dev/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.dev/docs/reference/configuration)
-- [CLI Usage](https://turborepo.dev/docs/reference/command-line-reference)
+## Monitoring
+
+### Setup
+
+1. Grafana, Prometheus, and Loki come up with the Docker Compose stack.
+2. From `terraform/`:
+
+```bash
+cd terraform
+terraform init
+terraform plan
+terraform apply -auto-approve
+```
+
+> **Note:** Uses the Grafana Terraform provider; modules rely on JSON dashboard templates in the repo.
+
+### Viewing Metrics and Logs
+
+**Default Docker Compose UI ports:**
+
+| Service      | URL                   | Notes                                                    |
+| ------------ | --------------------- | --------------------------------------------------------- |
+| Grafana      | http://localhost:3005 | Dashboards from Terraform. Default creds: `admin:admin`  |
+| Prometheus   | http://localhost:9090 | Explore metrics, run ad-hoc queries                      |
+| Loki         | http://localhost:3100 | Log aggregation                                          |
+| RedisInsight | http://localhost:5540 | Inspect Redis data                                       |
+
+---
+
+## Port Map
+
+| Service        | Address                       |
+| --------------- | ------------------------------ |
+| App server     | http://localhost:3000         |
+| ↳ Health check | http://localhost:3000/health  |
+| ↳ Metrics      | http://localhost:3000/metrics |
+| PostgreSQL     | localhost:5432                |
+| Redis          | localhost:6379                |
+| RedisInsight   | http://localhost:5540         |
+| Prometheus     | http://localhost:9090         |
+| Grafana        | http://localhost:3005         |
+| Loki           | http://localhost:3100         |
+
+---
+
+## Quick Start Summary
+
+**Shortest path to running locally:**
+
+```bash
+pnpm install
+cp apps/server/.env.example apps/server/.env
+pnpm dev
+```
+
+**Shortest path to the full Docker stack:**
+
+```bash
+cp apps/server/.env.example apps/server/.env.production.local
+docker compose up
+```
