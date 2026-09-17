@@ -31,13 +31,13 @@ jobs:
         run: pnpm install
 
       - name: Build static files
-        run: pnpm gen:docs
+        run: pnpm gen:docs-all
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "./typedoc/"
+          path: "./docs/"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
