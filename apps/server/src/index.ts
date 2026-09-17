@@ -3,7 +3,8 @@
 // └─────────────────────────┘
 import { rateLimit } from "express-rate-limit";
 import { RedisStore } from "rate-limit-redis";
-import { ApiResponse, connectRedis, redisClient } from "./libs";
+import { ApiResponse } from "@repo/shared";
+import { connectRedis, redisClient } from "@/libs";
 import { errorHandlerMiddleware, requestLogger } from "./middlewares";
 import { baseConfig } from "./config";
 import { ExpressServer } from "./server";

@@ -12,9 +12,5 @@
   "scripts": {
     "gen:docs": "NODE_OPTIONS='--max-old-space-size=4096' typedoc",
     "clean": "rm -rf node_modules docs && echo 'Cleanup complete!'"
-  },
-  "devDependencies": {
-    "@types/react": "^19.2.14",
-    "lucide-react": "^0.471.2"
   }
 }

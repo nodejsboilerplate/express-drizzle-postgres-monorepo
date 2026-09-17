@@ -1,6 +1,5 @@
-import { ApiError } from "@/libs";
+import { ApiError, getSystemCustomErrorMsgByKey } from "@repo/shared";
 import { TwilioService } from "./twilio.service";
-import { getSystemCustomErrorMsgByKey } from "@/events";
 import type { IPhoneMessageService } from "@/blueprints";
 import type { UserIdWithContextIdInputType } from "@/zod";
 import { UserInputValidators } from "@/validators/inputs";

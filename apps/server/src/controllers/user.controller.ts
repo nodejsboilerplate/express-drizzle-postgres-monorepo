@@ -12,7 +12,7 @@ import type {
   UserIdWithContextIdInputType,
 } from "@/zod";
 
-import { ApiResponse } from "@/libs";
+import { ApiResponse } from "@repo/shared";
 import { UserService } from "@/services";
 
 type UserControllerDepsType = {

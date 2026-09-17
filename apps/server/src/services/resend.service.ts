@@ -2,8 +2,7 @@ import "dotenv/config";
 import { resendConfig } from "@/config";
 import { Resend, type WebhookEventPayload } from "resend";
 import type { Request } from "express";
-import { ApiError } from "@/libs";
-import { getSystemCustomErrorMsgByKey } from "@/events";
+import { ApiError, getSystemCustomErrorMsgByKey } from "@repo/shared";
 import type { WebhookHeadersType } from "@/types";
 
 export class ResendService {

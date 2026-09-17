@@ -1,4 +1,4 @@
-import { ApiResponse } from "@/libs";
+import { ApiResponse } from "@repo/shared";
 import { ResendService } from "@/services";
 import type { Request, Response } from "express";
 

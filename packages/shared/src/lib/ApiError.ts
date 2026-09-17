@@ -1,4 +1,4 @@
-import { type ApiErrorType } from "@/types";
+import { type ApiErrorType } from "@repo/types";
 import {
   SystemCustomErrorMsgByCode,
   type SystemCustomErrorMessageDataType,

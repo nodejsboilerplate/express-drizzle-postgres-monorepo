@@ -1,6 +1,9 @@
 import type { IEmailService, IPhoneMessageService } from "@/blueprints";
-import { getSystemCustomErrorMsgByKey } from "@/events";
-import { ApiError, ApiResponse } from "@/libs";
+import {
+  ApiError,
+  ApiResponse,
+  getSystemCustomErrorMsgByKey,
+} from "@repo/shared";
 import type { VerificationService } from "@/services";
 import type {
   UserIdWithContextIdInputType,

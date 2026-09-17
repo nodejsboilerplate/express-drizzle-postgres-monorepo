@@ -1,4 +1,4 @@
-import { type ApiResponseType } from "@/types";
+import { type ApiResponseType } from "@repo/types";
 
 /**
  * A standardized wrapper for all successful API responses.

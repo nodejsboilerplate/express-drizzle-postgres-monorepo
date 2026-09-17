@@ -22,6 +22,7 @@
     }
   },
   "devDependencies": {
+    "@types/node": "^26.2.0",
     "typedoc": "^0.28.20",
     "@repo/typescript-config": "workspace:*",
     "@repo/eslint-config": "workspace:*",

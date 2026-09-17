@@ -7,8 +7,8 @@ import {
   isZodError,
   validationError,
 } from "@/utils";
-import { ApiError } from "@/libs";
-import { getSystemCustomErrorMsgByKey } from "@/events";
+import { ApiError, getSystemCustomErrorMsgByKey } from "@repo/shared";
+
 import { UserInputValidators } from "@/validators/inputs";
 import { UserRepository } from "@/database/repositories";
 import type { UserIdWithContextIdInputType } from "@/zod";

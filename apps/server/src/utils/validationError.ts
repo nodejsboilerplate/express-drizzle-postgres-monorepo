@@ -1,5 +1,4 @@
-import { getSystemCustomErrorMsgByKey } from "@/events";
-import { ApiError } from "@/libs";
+import { ApiError, getSystemCustomErrorMsgByKey } from "@repo/shared";
 import z4 from "zod/v4";
 
 export function validationError(zodError: z4.ZodError): ApiError {

@@ -7,8 +7,7 @@ import { UserInputValidators } from "@/validators/inputs";
 import { TokenService } from "./token.service";
 import type { IEmailService } from "@/blueprints";
 import type { UserBasicInfoDataType } from "@/types";
-import { getSystemCustomErrorMsgByKey } from "@/events";
-import { ApiError } from "@/libs";
+import { ApiError, getSystemCustomErrorMsgByKey } from "@repo/shared";
 
 type AuthServiceDepsType = {
   authRedis: AuthRedis;

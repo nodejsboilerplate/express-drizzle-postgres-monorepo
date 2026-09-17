@@ -1,5 +1,5 @@
 import "dotenv/config";
-import type { RedisConfigType } from "@/types";
+import type { RedisConfigType } from "@repo/types";
 
 export const RedisConfig: RedisConfigType = {
   REDIS_USERNAME: process.env.REDIS_USERNAME ?? "",

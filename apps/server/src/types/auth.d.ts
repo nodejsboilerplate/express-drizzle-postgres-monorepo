@@ -14,11 +14,6 @@ export type UserBasicInfoDataType = AccessTokenPayload &
 
 export type RefreshTokenPayload = Pick<UserSelectType, "id" | "role">;
 
-export type CookieNames = {
-  accessToken: string;
-  refreshToken: string;
-};
-
 declare global {
   namespace Express {
     interface Request {

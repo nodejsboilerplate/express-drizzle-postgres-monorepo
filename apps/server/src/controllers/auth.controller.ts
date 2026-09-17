@@ -1,4 +1,4 @@
-import { ApiResponse } from "@/libs";
+import { ApiResponse } from "@repo/shared";
 import { CookieService } from "@/services";
 import type { AuthService } from "@/services/auth";
 import type { UserProfileDataByLoginType } from "@/types";

@@ -1,6 +1,6 @@
+import type { CookieNames } from "@repo/types";
 import type {
   AccessTokenPayload,
-  CookieNames,
   RefreshTokenPayload,
   UserProfileDataByLoginType,
 } from "@/types";
@@ -9,8 +9,7 @@ import {
   CookieService,
   REFRESH_TOKEN_EXPIRY_SEC,
 } from "../cookie.service";
-import { getSystemCustomErrorMsgByKey } from "@/events";
-import { ApiError } from "@/libs";
+import { ApiError, getSystemCustomErrorMsgByKey } from "@repo/shared";
 import jwt from "jsonwebtoken";
 import { authConfig } from "@/config";
 import type { Request } from "express";

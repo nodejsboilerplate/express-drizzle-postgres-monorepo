@@ -1,4 +1,4 @@
-import type { CookieNames } from "@/types";
+import type { CookieNames } from "@repo/types";
 import type { UserIdWithContextIdInputType } from "@/zod";
 
 export interface IEmailService {
