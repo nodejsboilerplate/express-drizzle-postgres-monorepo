@@ -1,9 +1,9 @@
 import { baseConfig } from "@/config";
 import {
-  ApiError,
   SystemCustomErrorCode,
   SystemCustomErrorMsgByCode,
-} from "@repo/shared";
+} from "@repo/constants";
+import { ApiError } from "@repo/shared";
 import type { ApiErrorType } from "@repo/types";
 
 import type { NextFunction, Request, Response } from "express";

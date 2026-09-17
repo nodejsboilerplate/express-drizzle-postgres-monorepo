@@ -8,6 +8,7 @@ export class AuthRedis {
     key: string,
     payload: UserBasicInfoDataType
   ): Promise<boolean> {
+    // @ts-ignore
     const [result, expiry_result] = await redisClient
       .multi()
       .set(key, JSON.stringify(payload), {
