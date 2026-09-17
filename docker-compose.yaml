@@ -9,7 +9,7 @@ services:
       - "grafana_loki"
     build:
       context: .
-      dockerfile: ./apps/server/Dockerfile.dev
+      dockerfile: ./apps/server/Dockerfile
     container_name: nebula-server
     env_file:
       - ./apps/server/.env.production.local
