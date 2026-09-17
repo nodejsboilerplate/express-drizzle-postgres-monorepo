@@ -1,4 +1,4 @@
-import { baseConfig } from "@/config";
+import { baseConfig } from "./src/config";
 import dotenv from "dotenv";
 
 // Run NODE_ENV=production pnpm db:migrate
