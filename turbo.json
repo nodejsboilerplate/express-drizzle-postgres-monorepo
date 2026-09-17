@@ -25,6 +25,10 @@
       "inputs": ["$TURBO_DEFAULT$", "!**/*.md"],
       "outputs": []
     },
+    "gen:docs": {
+      "dependsOn": ["^build"],
+      "cache": false
+    },
     "fix": {
       "cache": false,
       "dependsOn": ["fix:lint"]

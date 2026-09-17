@@ -10,7 +10,7 @@
     }
   },
   "scripts": {
-    "gen:docs": "typedoc --out docs"
+    "gen:docs": "NODE_OPTIONS='--max-old-space-size=4096' typedoc"
   },
   "devDependencies": {
     "@types/react": "^19.2.14",
