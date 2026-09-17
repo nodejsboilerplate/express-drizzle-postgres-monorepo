@@ -43,7 +43,6 @@
     "@types/response-time": "^2.3.9",
     "@types/supertest": "^7.2.1",
     "drizzle-kit": "1.0.0-rc.4",
-    "express": "^5.2.1",
     "supertest": "^7.2.2",
     "ts-node": "^10.9.2",
     "tsx": "^4.23.12",
@@ -52,6 +51,7 @@
     "vitest": "^4.1.11"
   },
   "dependencies": {
+    "express": "^5.2.1",
     "@repo/shared": "workspace:*",
     "dotenv": "^17.4.2",
     "@prometheus-io/client": "^0.16.1",
