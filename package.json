@@ -22,7 +22,13 @@
     }
   },
   "devDependencies": {
+    "ts-node": "^10.9.2",
+    "tsx": "^4.23.12",
     "@types/node": "^26.2.0",
+    "winston": "^3.19.0",
+    "vite-tsconfig-paths": "^6.1.1",
+    "supertest": "^7.2.2",
+    "vitest": "^4.1.11",
     "typedoc": "^0.28.20",
     "@repo/typescript-config": "workspace:*",
     "@repo/eslint-config": "workspace:*",
@@ -45,10 +51,10 @@
   },
   "packageManager": "pnpm@11.25.0",
   "dependencies": {
+    "uuid": "^14.0.2",
     "@repo/constants": "workspace:*",
     "@repo/zod": "workspace:*",
-    "zod": "^4.4.3",
-    "tsdown": "^0.22.14"
+    "zod": "^4.4.3"
   },
   "engines": {
     "node": ">=24"

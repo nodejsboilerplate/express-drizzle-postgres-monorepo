@@ -42,13 +42,7 @@
     "@types/request-ip": "^0.0.41",
     "@types/response-time": "^2.3.9",
     "@types/supertest": "^7.2.1",
-    "drizzle-kit": "1.0.0-rc.4",
-    "supertest": "^7.2.2",
-    "ts-node": "^10.9.2",
-    "tsx": "^4.23.12",
-    "winston": "^3.19.0",
-    "vite-tsconfig-paths": "^6.1.1",
-    "vitest": "^4.1.11"
+    "drizzle-kit": "1.0.0-rc.4"
   },
   "dependencies": {
     "express": "^5.2.1",
@@ -71,8 +65,7 @@
     "request-ip": "^3.3.0",
     "resend": "^6.24.0",
     "response-time": "^2.3.4",
-    "twilio": "^6.1.0",
-    "uuid": "^14.0.2"
+    "twilio": "^6.1.0"
   },
   "packageManager": "pnpm@11.0.0"
 }
