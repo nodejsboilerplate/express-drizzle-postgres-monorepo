@@ -50,12 +50,13 @@ export const requestLogger = () => {
       };
 
       if (res.statusCode >= 400) {
-        if (baseConfig.NODE_ENV === "development") {
-          plogger.error(logData, "Request failed");
-        } else {
-          logger.error(logData);
-        }
+        plogger?.error(logData);
+        logger.error(logData);
+      } else if (res.statusCode >= 300 && res.statusCode < 400) {
+        plogger?.silent(logData);
       }
+      plogger?.info(logData);
+      logger.info(logData);
     });
 
     next();

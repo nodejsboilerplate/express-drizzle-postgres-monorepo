@@ -1,7 +1,7 @@
+import type { Logger } from "pino";
 import pino, { type HttpLogger, type Options } from "pino-http";
-import { type Logger } from "pino";
 
-const config = {
+const config: Options = {
   transport: {
     targets: [
       {
@@ -11,17 +11,23 @@ const config = {
           colorize: true,
           levelFirst: true,
           translateTime: "SYS:standard",
+          messageFormat:
+            "{method} {url} {statusCode} {responseTime} [{responseMessage}]",
+          singleLine: true,
         },
       },
     ],
   },
-  level: "debug",
 };
 
 class PinoLogger {
   private logger: HttpLogger | null = null;
 
-  createLogger(options: Options = {}): Logger {
+  createLogger(options: Options = {}): Logger | null {
+    if (process.env.NODE_ENV === "production") {
+      return null;
+    }
+
     if (!this.logger) {
       this.logger = pino({ ...config, ...options });
     }
